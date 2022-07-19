@@ -1,0 +1,124 @@
+icrosoft Windows [Version 10.0.19044.1826]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\Admin>mongo
+MongoDB shell version v5.0.9
+connecting to: mongodb://127.0.0.1:27017/?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("bb15f80b-c553-476a-a8cd-a44476e53811") }
+MongoDB server version: 5.0.9
+================
+Warning: the "mongo" shell has been superseded by "mongosh",
+which delivers improved usability and compatibility.The "mongo" shell has been deprecated and will be removed in
+an upcoming release.
+For installation instructions, see
+https://docs.mongodb.com/mongodb-shell/install/
+================
+---
+The server generated these startup warnings when booting:
+        2022-07-17T22:29:12.145+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+---
+---
+        Enable MongoDB's free cloud-based monitoring service, which will then receive and display
+        metrics about your deployment (disk utilization, CPU, operation statistics, etc).
+
+        The monitoring data will be available on a MongoDB website with a unique URL accessible to you
+        and anyone you share the URL with. MongoDB may use this information to make product
+        improvements and to suggest MongoDB products and deployment options to you.
+
+        To enable free monitoring, run the following command: db.enableFreeMonitoring()
+        To permanently disable this reminder, run the following command: db.disableFreeMonitoring()
+---
+> show databases;
+Java10febSpringMaven  0.000GB
+admin                 0.000GB
+config                0.000GB
+local                 0.000GB
+
+>use Java10febSpringMaven
+switched to db Java10febSpringMaven
+> show collections;
+Student
+
+
+> db.employee.find();
+{ "_id" : ObjectId("61e54d4adda5c116682f99ed"), "name" : "Prakash", "email" : "prakash@gmail.com", "contact" : NumberLong(345354), "_class" : "com.codekul.Java28SeptSpringMaven.Employee" }
+{ "_id" : ObjectId("620b726fca1ee3798cb4cc15"), "name" : "Akash", "email" : "akash@gmail.com", "contact" : 23424234 }
+{ "_id" : ObjectId("620b726fca1ee3798cb4cc16"), "name" : "Rahul", "email" : "rahul@gmail.com", "contact" : 23424234 }
+> db.employee.find().pretty();
+{
+	"_id" : ObjectId("61e54d4adda5c116682f99ed"),
+	"name" : "Prakash",
+	"email" : "prakash@gmail.com",
+	"contact" : NumberLong(345354),
+	"_class" : "com.codekul.Java28SeptSpringMaven.Employee"
+}
+{
+	"_id" : ObjectId("620b726fca1ee3798cb4cc15"),
+	"name" : "Akash",
+	"email" : "akash@gmail.com",
+	"contact" : 23424234
+}
+{
+	"_id" : ObjectId("620b726fca1ee3798cb4cc16"),
+	"name" : "Rahul",
+	"email" : "rahul@gmail.com",
+
+	>db.employee.insert({'name':"Vinay",'email':"vinay@gmail.com",'contact';235445});
+    uncaught exception: SyntaxError: missing : after property id :
+    @(shell):1:70
+    > db.employee.insert({'name':"Vinay",'email':"vinay@gmail.com",'contact':235445});
+    WriteResult({ "nInserted" : 1 })
+    > db.employee.insertOne({'name':"Vijay",'email':"vijay@gmail.com",'contact':23555});
+    {
+    	"acknowledged" : true,
+    	"insertedId" : ObjectId("620b897d0d9bb617d648be05")
+    }
+    > db.employee.find().pretty();
+    {
+    	"_id" : ObjectId("61e54d4adda5c116682f99ed"),
+    	"name" : "Prakash",
+    	"email" : "prakash@gmail.com",
+    	"contact" : NumberLong(345354),
+    	"_class" : "com.codekul.Java28SeptSpringMaven.Employee"
+    }
+    {
+    	"_id" : ObjectId("620b726fca1ee3798cb4cc15"),
+    	"name" : "Akash",
+    	"email" : "akash@gmail.com",
+    	"contact" : 23424234
+    }
+    {
+    	"_id" : ObjectId("620b726fca1ee3798cb4cc16"),
+    	"name" : "Rahul",
+    	"email" : "rahul@gmail.com",
+    	"contact" : 23424234
+    }
+    {
+    	"_id" : ObjectId("620b89520d9bb617d648be04"),
+    	"name" : "Vinay",
+    	"email" : "vinay@gmail.com",
+    	"contact" : 235445
+    }
+    {
+    	"_id" : ObjectId("620b897d0d9bb617d648be05"),
+    	"name" : "Vijay",
+    	"email" : "vijay@gmail.com",
+    	"contact" : 23555
+    }
+    > db.employee.insertMany([{'name':"Viraj",'email':"viraj@gmail.com",'contact':23555},{'name':"vikas",'email':"vikas@gmail.com",'contact':23555}]);
+    {
+    	"acknowledged" : true,
+    	"insertedIds" : [
+    		ObjectId("620b89c20d9bb617d648be06"),
+    		ObjectId("620b89c20d9bb617d648be07")
+    	]
+    }
+
+    db.employee.updateOne({"_id" : ObjectId("620b89c20d9bb617d648be07")},{$set: {'name':'Suyash'}});
+    { "acknowledged" : true, "matchedCount" : 1, "modifiedCount" : 1 }
+
+     db.employee.remove({"_id" : ObjectId("620b89c20d9bb617d648be07")});
+    WriteResult({ "nRemoved" : 1 })
+
+    db.employee.update({"_id" : ObjectId("620b89c20d9bb617d648be07")},{$set: {'name':'Suhas'}});
+    WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
