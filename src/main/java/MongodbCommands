@@ -28,6 +28,8 @@ The server generated these startup warnings when booting:
         To enable free monitoring, run the following command: db.enableFreeMonitoring()
         To permanently disable this reminder, run the following command: db.disableFreeMonitoring()
 ---
+
+
 > show databases;
 Java10febSpringMaven  0.000GB
 admin                 0.000GB
@@ -44,6 +46,7 @@ Student
 { "_id" : ObjectId("61e54d4adda5c116682f99ed"), "name" : "Prakash", "email" : "prakash@gmail.com", "contact" : NumberLong(345354), "_class" : "com.codekul.Java28SeptSpringMaven.Employee" }
 { "_id" : ObjectId("620b726fca1ee3798cb4cc15"), "name" : "Akash", "email" : "akash@gmail.com", "contact" : 23424234 }
 { "_id" : ObjectId("620b726fca1ee3798cb4cc16"), "name" : "Rahul", "email" : "rahul@gmail.com", "contact" : 23424234 }
+
 > db.employee.find().pretty();
 {
 	"_id" : ObjectId("61e54d4adda5c116682f99ed"),
